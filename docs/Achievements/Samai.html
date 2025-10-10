@@ -51,8 +51,10 @@
     }
 
     .certifications-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
       gap: 2rem;
       max-width: 1200px;
       margin: 3rem auto;
@@ -137,18 +139,31 @@
   <div class="center-container">
     <h1 class="dynamic-name">Samai</h1>
 
+    <div class="certifications-container">
+
       <div class="certification-card">
         <h3 class="certification-title">Samai AI Fundamentals</h3>
-        <p class="certification-desc">This program aims to enhance your knowledge in the field of artificial intelligence and deepen your understanding of its advanced concepts and diverse technologies.</p>
-        <img src="images/Samai/image.png" alt="" class="certification-image">
+        <p class="certification-desc">
+          This program aims to enhance your knowledge in the field of artificial intelligence and deepen your understanding of its advanced concepts and diverse technologies.
+        </p>
+        <img src="Achievements/images/Samai/image.png" alt="" class="certification-image">
       </div>
+
+      <div class="certification-card">
+        <h3 class="certification-title">Artificial Intelligence Concepts and Advanced Applications</h3>
+        <p class="certification-desc">
+          This training program aims to provide trainees with a comprehensive understanding of the basic concepts of artificial intelligence, its types, and the techniques used in analyzing data, discovering patterns, making predictions, and using these techniques effectively in various fields.
+        </p>
+        <img src="Achievements/images/Samai/image2.png" alt="" class="certification-image">
+      </div>
+
     </div>
+  </div>
 
-     <div style="display: flex; gap: 1rem; justify-content: center; margin-top: -200px; position: relative; z-index: 2;">
-  <button class="back-button" onclick="window.history.back()">← Go Back</button>
-  <button class="back-button" onclick="window.location.href='../'">Back to Home</button>
-</div>
-
+  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: -200px; position: relative; z-index: 2;">
+    <button class="back-button" onclick="window.history.back()">← Go Back</button>
+    <button class="back-button" onclick="window.location.href='../'">Back to Home</button>
+  </div>
 
 <script>
   const starsBg = document.getElementById('stars-bg');
@@ -200,6 +215,7 @@
     }
   });
 </script>
+
   <div style="height: 100px;"></div>
 </body>
 </html>
