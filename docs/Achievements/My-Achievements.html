@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>0xHM | Hacker Categories</title>
+<style>
+:root {
+  --hacker-red: #ff0000;
+  --hacker-purple: #9d00ff;
+  --hacker-blue: #0500ff;
+  --hacker-green: #00ff41;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: 'Courier New', monospace;
+  background-color: #000;
+  overflow-x: hidden;
+}
+#stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
+}
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.dynamic-name {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 5px;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--hacker-purple), var(--hacker-blue), var(--hacker-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleGlow 8s infinite alternate;
+}
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 15px var(--hacker-purple); }
+  50% { text-shadow: 0 0 20px var(--hacker-blue); }
+  100% { text-shadow: 0 0 15px var(--hacker-green); }
+}
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  width: 100%;
+}
+.category-btn {
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--btn-color);
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  box-shadow: 0 0 15px var(--btn-glow);
+}
+.category-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--btn-glow);
+  background: rgba(10, 10, 10, 0.8);
+}
+.emoji {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.back-button {
+  margin-top: 3rem;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 2px solid var(--hacker-green);
+  color: var(--hacker-green);
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.back-button:hover {
+  background: rgba(0, 255, 65, 0.2);
+  text-shadow: 0 0 15px var(--hacker-green);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+}
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--duration) infinite ease-in-out;
+  opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+<body>
+<div id="stars-bg"></div>
+<div class="center-container">
+  <h1 class="dynamic-name">My Achievements</h1>
+  <div class="categories-container">
+    <!-- TCM Security -->
+    <a href="tcm.html" class="category-btn" style="--btn-color: #ff0000; --btn-glow: rgba(255,0,0,0.5)">
+      <div class="emoji">🛡️</div>
+      <div>TCM Security</div>
+    </a>
+    <!-- Cisco Academy -->
+    <a href="Cisco-Academy.html" class="category-btn" style="--btn-color: #00ffff; --btn-glow: rgba(0,255,255,0.5)">
+      <div class="emoji">🌐</div>
+      <div>Cisco Academy</div>
+    </a>
+    <!-- Samai -->
+    <a href="Samai.html" class="category-btn" style="--btn-color: #ff00ff; --btn-glow: rgba(255,0,255,0.5)">
+      <div class="emoji">💡</div>
+      <div>Samai</div>
+    </a>
+    <!-- TryHackMe -->
+    <a href="tryhackme.html" class="category-btn" style="--btn-color: #00ff00; --btn-glow: rgba(0,255,0,0.5)">
+      <div class="emoji">🔍</div>
+      <div>TryHackMe</div>
+    </a>
+  </div>
+</div>
+
+<div style="display: flex; gap: 1rem; justify-content: center; margin-top: -10rem; z-index: 10; position: relative;">
+  <button type="button" class="back-button" onclick="window.history.back()">← GO BACK</button>
+  <button type="button" class="back-button" onclick="window.location.href='../index.html'">BACK TO HOME</button>
+</div>
+
+<script>
+const starsBg = document.getElementById('stars-bg');
+const starsCount = 150;
+const stars = [];
+for (let i = 0; i < starsCount; i++) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  const size = Math.random() * 2 + 0.5;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.opacity = 0.8;
+  star.x = Math.random() * window.innerWidth;
+  star.y = Math.random() * window.innerHeight;
+  star.vx = (Math.random() - 0.5) * 0.3;
+  star.vy = (Math.random() - 0.5) * 0.3;
+  star.style.left = star.x + 'px';
+  star.style.top = star.y + 'px';
+  starsBg.appendChild(star);
+  stars.push(star);
+}
+function animateStars() {
+  for (const star of stars) {
+    star.x += star.vx;
+    star.y += star.vy;
+    if (star.x < 0 || star.x > window.innerWidth) star.vx = -star.vx;
+    if (star.y < 0 || star.y > window.innerHeight) star.vy = -star.vy;
+    star.style.left = star.x + 'px';
+    star.style.top = star.y + 'px';
+  }
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+window.addEventListener('resize', () => {
+  for (const star of stars) {
+    if (star.x > window.innerWidth) star.x = window.innerWidth;
+    if (star.y > window.innerHeight) star.y = window.innerHeight;
+  }
+});
+</script>
+</body>
+</html>
