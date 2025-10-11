@@ -300,6 +300,39 @@
       0%, 100% { opacity: 0; transform: scale(0.5); }
       50% { opacity: 1; transform: scale(1); }
     }
+
+    .btn-red, .btn-green {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-family: 'Courier New', monospace;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .btn-red {
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  .btn-red:hover {
+    background-color: #ff0000;
+    color: #000;
+  }
+
+  .btn-green {
+    color: #00ff41;
+    border: 2px solid #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  }
+  .btn-green:hover {
+    background-color: #00ff41;
+    color: #000;
+  }
   </style>
 <meta name="google-site-verification" content="vXZdBk8WVJ8SR9_Ehy1G-Y9Ig3MjeOyYtkh4aAiEwnk" />
 </head>
@@ -428,34 +461,11 @@
   });
 </script>
 <div style="text-align: center; margin-top: 2rem;">
-  <button onclick="window.location.href='Articles/My-Articles.html'" style="
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
-    font-family: 'Courier New', monospace;
-    color: #ff0000;
-    border: 2px solid #ff0000;
-    border-radius: 30px;
-    text-decoration: none; 
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    margin-right: 10px;
-  " onmouseover="this.style.backgroundColor='#ff0000'; this.style.color='black'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#ff0000'">
+  <button class="btn-red" onclick="window.location.href='Articles/My-Articles.html'">
     My Articles
   </button>
 
-  <button onclick="window.location.href='Achievements/My-Achievements.html'" style="
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
-    font-family: 'Courier New', monospace;
-    color: #00ff41;
-    border: 2px solid #00ff41;
-    border-radius: 30px;
-    text-decoration: none; 
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-  " onmouseover="this.style.backgroundColor='#00ff41'; this.style.color='black'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00ff41'">
+  <button class="btn-green" onclick="window.location.href='Achievements/My-Achievements.html'">
     My Achievements
   </button>
 </div>
