@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTFwriteup</title>
+    <style>
+      :root {
+        --hacker-green: #00ff41;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        overflow-x: hidden;
+      }
+
+      #stars-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(
+          ellipse at bottom,
+          #1b2735 0%,
+          #090a0f 100%
+        );
+        overflow: hidden;
+      }
+
+      .center-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .dynamic-name {
+        font-size: 3rem;
+        letter-spacing: 5px;
+        margin-bottom: 3rem;
+        color: var(--hacker-green);
+      }
+
+      .single-box {
+        padding: 2.5rem;
+        border-radius: 10px;
+        border: 2px solid var(--hacker-green);
+        color: var(--hacker-green);
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.75);
+        box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+        text-align: center;
+        max-width: 600px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+      }
+
+      .single-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 35px rgba(0, 255, 65, 0.8);
+      }
+
+      .star {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0.8;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .styled-button {
+        border: 1px solid var(--hacker-green);
+        padding: 0.6rem 1.4rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--hacker-green);
+        font-family: "Courier New", monospace;
+        font-size: 1rem;
+        cursor: pointer;
+        min-width: 120px;
+        transition: all 0.3s ease;
+      }
+
+      .styled-button:hover {
+        box-shadow: 0 0 8px var(--hacker-green);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stars-bg"></div>
+
+    <div class="center-container">
+      <h1 class="dynamic-name">CTFwriteup</h1>
+
+      <div
+        class="single-box"
+        onclick="window.location.href='CTF0xhm-F1L3_M1X3R_2-MP4_Identity_Issue.html'"
+      >
+        F1L3 M1X3R 2-MP4 Identity Issus
+      </div>
+
+      <div class="button-row">
+        <button class="styled-button" onclick="window.history.back();">
+          Go Back
+        </button>
+        <button class="styled-button" onclick="window.location.href='/'">
+          Back to Home
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const starsBg = document.getElementById("stars-bg");
+      const starsCount = 150;
+      const stars = [];
+
+      for (let i = 0; i < starsCount; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+
+        const size = Math.random() * 2 + 0.5;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+
+        star.x = Math.random() * window.innerWidth;
+        star.y = Math.random() * window.innerHeight;
+        star.vx = (Math.random() - 0.5) * 0.3;
+        star.vy = (Math.random() - 0.5) * 0.3;
+
+        star.style.left = star.x + "px";
+        star.style.top = star.y + "px";
+
+        starsBg.appendChild(star);
+        stars.push(star);
+      }
+
+      function animateStars() {
+        for (const star of stars) {
+          star.x += star.vx;
+          star.y += star.vy;
+
+          if (star.x < 0 || star.x > window.innerWidth) star.vx *= -1;
+          if (star.y < 0 || star.y > window.innerHeight) star.vy *= -1;
+
+          star.style.left = star.x + "px";
+          star.style.top = star.y + "px";
+        }
+        requestAnimationFrame(animateStars);
+      }
+
+      animateStars();
+    </script>
+  </body>
+</html>
